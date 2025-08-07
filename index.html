@@ -10,10 +10,15 @@
       color: #4b004b;
       text-align: center;
       padding: 2rem;
+      overflow-x: hidden;
     }
     h1 {
       font-size: 3em;
       margin-bottom: 0.5em;
+      animation: fadeIn 2s ease-in;
+    }
+    p, .quote, .secret, footer {
+      animation: fadeIn 3s ease-in;
     }
     .quote {
       font-style: italic;
@@ -35,15 +40,40 @@
       margin-top: 1em;
       font-size: 1.1em;
       color: #6a0dad;
+      animation: fadeIn 1s ease-in;
     }
     footer {
       margin-top: 3em;
       font-size: 0.9em;
       color: #888;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Falling hearts */
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 2rem;
+      color: #ff69b4;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -50px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
   </style>
 </head>
 <body>
+
+  <audio autoplay loop controls style="margin-bottom: 1em;">
+    <source src="your-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <h1>Happy Birthday, Sneha 🎂</h1>
   <p>To the one who holds my heart,</p>
@@ -63,6 +93,19 @@
   <footer>
     Made with endless love by Banibrata 💖
   </footer>
+
+  <!-- Falling hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.innerText = '💖';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
 
 </body>
 </html>
