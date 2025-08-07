@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Birthday Sneha 💖</title>
+
+  <!-- Lightbox2 CSS & JS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -12,19 +17,23 @@
       padding: 2rem;
       overflow-x: hidden;
     }
+
     h1 {
       font-size: 3em;
       margin-bottom: 0.5em;
       animation: fadeIn 2s ease-in;
     }
+
     p, .quote, .secret, footer {
       animation: fadeIn 3s ease-in;
     }
+
     .quote {
       font-style: italic;
       margin: 1.5em 0;
       font-size: 1.2em;
     }
+
     .secret {
       margin-top: 2em;
       cursor: pointer;
@@ -32,9 +41,11 @@
       font-weight: bold;
       transition: color 0.3s ease;
     }
+
     .secret:hover {
       color: #a61e6e;
     }
+
     #hiddenMessage {
       display: none;
       margin-top: 1em;
@@ -42,6 +53,7 @@
       color: #6a0dad;
       animation: fadeIn 1s ease-in;
     }
+
     footer {
       margin-top: 3em;
       font-size: 0.9em;
@@ -66,39 +78,96 @@
       0% { top: -50px; opacity: 1; }
       100% { top: 100vh; opacity: 0; }
     }
+
+    /* Original Gallery */
     .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5em;
-  padding: 0 1em;
-  animation: fadeIn 2s ease-in;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
+      padding: 0 1em;
+      animation: fadeIn 2s ease-in;
+    }
 
-.photo {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
+    .photo {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
 
-.photo:hover {
-  transform: scale(1.03);
-}
+    .photo:hover {
+      transform: scale(1.03);
+    }
 
-.photo img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+    .photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-.caption {
-  padding: 0.5em 1em;
-  font-size: 0.95em;
-  color: #6a0dad;
-  background-color: #fdf0f5;
-}
+    .caption {
+      padding: 0.5em 1em;
+      font-size: 0.95em;
+      color: #6a0dad;
+      background-color: #fdf0f5;
+    }
 
+    /* Enhanced Gallery Styles */
+    .heart-frame {
+      width: 250px;
+      height: 250px;
+      clip-path: path("M125,30 C160,-10 250,30 125,200 C0,30 90,-10 125,30 Z");
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .heart-frame:hover {
+      transform: scale(1.05);
+    }
+
+    .heart-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .enhanced-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      color: white;
+      background: rgba(0,0,0,0.6);
+      padding: 8px;
+      font-size: 1em;
+      border-radius: 8px;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sepia { filter: sepia(80%); }
+    .grayscale { filter: grayscale(100%); }
+    .blur { filter: blur(2px); }
+
+    .lightbox-thumbs a img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox-thumbs a img:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -122,42 +191,47 @@
   <div id="hiddenMessage">
     I love you more than words can say. You are my forever, Sneha.
   </div>
-<!-- 💖 Photo Gallery Section -->
-<section id="gallery" style="margin-top: 4em;">
-  <h2 style="font-size: 2em; margin-bottom: 1em; animation: fadeIn 2s ease-in;">Our Beautiful Moments 📸</h2>
-  <div class="gallery">
-    <div class="photo">
-      <img src="images/photo1.jpg" alt="Sneha smiling" />
-      <p class="caption">Your smile lights up my world</p>
-    </div>
-    <div class="photo">
-      <img src="images/photo2.jpg" alt="Together at sunset" />
-      <p class="caption">Golden hour with my golden girl</p>
-    </div>
-    <div class="photo">
-      <img src="images/photo3.jpg" alt="Holding hands" />
-      <p class="caption">Every moment with you is magic</p>
-    </div>
-    <!-- Add more photos as needed -->
-  </div>
-</section>
 
-  <footer>
-    Made with endless love by Banibrata 💖
-  </footer>
+  <!-- Original Photo Gallery -->
+  <section id="gallery" style="margin-top: 4em;">
+    <h2 style="font-size: 2em; margin-bottom: 1em;">Our Beautiful Moments 📸</h2>
+    <div class="gallery">
+      <div class="photo">
+        <img src="images/photo1.jpg" alt="Sneha smiling" />
+        <p class="caption">Your smile lights up my world</p>
+      </div>
+      <div class="photo">
+        <img src="images/photo2.jpg" alt="Together at sunset" />
+        <p class="caption">Golden hour with my golden girl</p>
+      </div>
+      <div class="photo">
+        <img src="images/photo3.jpg" alt="Holding hands" />
+        <p class="caption">Every moment with you is magic</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- Falling hearts -->
-  <script>
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * window.innerWidth + 'px';
-      heart.innerText = '💖';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-    setInterval(createHeart, 500);
-  </script>
+  <!-- Enhanced Heart-Shaped Gallery -->
+  <section style="margin-top: 4em;">
+    <h2 style="font-size: 2em; margin-bottom: 1em;">Special Frames Just for You 💖</h2>
+    <div class="gallery">
+      <div class="heart-frame">
+        <img src="images/photo1.jpg" alt="Sneha smiling" class="sepia" />
+        <div class="enhanced-caption">Sneha's radiant smile 🌟</div>
+      </div>
+      <div class="heart-frame">
+        <img src="images/photo2.jpg" alt="Sneha laughing" class="grayscale" />
+        <div class="enhanced-caption">Laughter that lights up the room 💫</div>
+      </div>
+      <div class="heart-frame">
+        <img src="images/photo3.jpg" alt="Sneha dreamy" class="blur" />
+        <div class="enhanced-caption">Dreamy moments captured 💖</div>
+      </div>
+    </div>
+  </section>
 
-</body>
-</html>
+  <!-- Lightbox Slideshow -->
+  <section style="margin-top: 4em;">
+    <h2 style="font-size: 2em; margin-bottom: 1em;">Click to View Full-Size Slideshow 🌠</h2>
+    <div class="gallery lightbox-thumbs">
+      <a href="images/photo
