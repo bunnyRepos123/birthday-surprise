@@ -209,6 +209,29 @@ footer {
   border-radius: 10px;
   display: inline-block;
 }
+.sneha-greeting {
+  font-size: 3em;
+  text-align: center;
+  color: #ff69b4;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { text-shadow: 0 0 10px #ff69b4; }
+  50% { text-shadow: 0 0 20px #ff1493; }
+  100% { text-shadow: 0 0 10px #ff69b4; }
+}
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  animation: floatUp 12s infinite ease-in;
+  width: 60px;
+}
+
+@keyframes floatUp {
+  0% { bottom: -150px; }
+  100% { bottom: 100vh; }
+}
 
   </style>
 </head>
@@ -236,6 +259,16 @@ footer {
     }
   }, 1000);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  window.onload = () => {
+    confetti({
+      particleCount: 200,
+      spread: 90,
+      origin: { y: 0.6 }
+    });
+  };
+</script>
 
 
 <body>
@@ -250,9 +283,13 @@ footer {
   </div>
 </div>
 
-  <h1>Happy Birthday, Sneha 🎂</h1>
+  <h1 class="sneha-greeting">🎂 Happy Birthday, Sneha! 🎂</h1>
+
   <p>To the one who holds my heart,</p>
   <p>From the moment I first held your hand, I knew I’d never let go. This page is a small tribute to that promise.</p>
+<img src="balloon1.png" class="balloon" style="left:10%;">
+<img src="balloon2.png" class="balloon" style="left:50%;">
+<img src="balloon3.png" class="balloon" style="left:80%;">
 
   <div class="quote">“You are my today and all of my tomorrows </div>
   <div class="quote">“I choose you. And I’ll choose you over and over and over. Without pause, without doubt, in a heartbeat. I’ll keep choosing you.”</div>
@@ -263,6 +300,17 @@ footer {
   <div id="hiddenMessage">
     I love you more than words can say. You are my forever, Sneha.
   </div>
+<button onclick="revealSnehaSurprise()">🎁 Sneha’s Surprise</button>
+<div id="sneha-surprise" style="display:none; margin-top:20px;">
+  <p>✨ Sneha, you light up every room you walk into. Today is your day to shine! ✨</p>
+  <img src="sneha-surprise.jpg" alt="Sneha's Surprise" style="width:100%; max-width:400px;">
+</div>
+
+<script>
+  function revealSnehaSurprise() {
+    document.getElementById("sneha-surprise").style.display = "block";
+  }
+</script>
 
   <!-- Original Photo Gallery -->
   <section id="gallery" style="margin-top: 4em;">
