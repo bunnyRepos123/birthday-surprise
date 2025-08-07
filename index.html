@@ -66,6 +66,39 @@
       0% { top: -50px; opacity: 1; }
       100% { top: 100vh; opacity: 0; }
     }
+    .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+  padding: 0 1em;
+  animation: fadeIn 2s ease-in;
+}
+
+.photo {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.03);
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  padding: 0.5em 1em;
+  font-size: 0.95em;
+  color: #6a0dad;
+  background-color: #fdf0f5;
+}
+
   </style>
 </head>
 <body>
@@ -89,6 +122,25 @@
   <div id="hiddenMessage">
     I love you more than words can say. You are my forever, Sneha.
   </div>
+<!-- 💖 Photo Gallery Section -->
+<section id="gallery" style="margin-top: 4em;">
+  <h2 style="font-size: 2em; margin-bottom: 1em; animation: fadeIn 2s ease-in;">Our Beautiful Moments 📸</h2>
+  <div class="gallery">
+    <div class="photo">
+      <img src="images/photo1.jpg" alt="Sneha smiling" />
+      <p class="caption">Your smile lights up my world</p>
+    </div>
+    <div class="photo">
+      <img src="images/photo2.jpg" alt="Together at sunset" />
+      <p class="caption">Golden hour with my golden girl</p>
+    </div>
+    <div class="photo">
+      <img src="images/photo3.jpg" alt="Holding hands" />
+      <p class="caption">Every moment with you is magic</p>
+    </div>
+    <!-- Add more photos as needed -->
+  </div>
+</section>
 
   <footer>
     Made with endless love by Banibrata 💖
