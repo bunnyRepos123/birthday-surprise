@@ -21,7 +21,7 @@ This page is a small tribute to that feeling. A digital bouquet of memories, mus
 
 Click below to open your surprise:
 
-👉 [View Sneha’s Birthday Page](https://bunnyRepos123.github.io/birthday-surprise)
+👉 [View Your Birthday Page](https://bunnyRepos123.github.io/birthday-surprise)
 
 *(Replace `your-username` with your actual GitHub username)*
 
