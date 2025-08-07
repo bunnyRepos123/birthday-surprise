@@ -1,241 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Happy Birthday Sneha 💖</title>
 
-  <!-- Lightbox2 -->
+  <!-- Lightbox2 CSS & JS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
-  <!-- Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
-      color: #4b004b;
-      text-align: center;
-      padding: 2rem;
-      overflow-x: hidden;
-    }
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+  color: #4b004b;
+  text-align: center;
+  padding: 2rem;
+  overflow-x: hidden;
+  margin: 0;
+}
 
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-      color: #ff69b4;
-      animation: shimmer 2s infinite;
-    }
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  animation: fadeIn 2s ease-in;
+}
 
-    @keyframes shimmer {
-      0% { text-shadow: 0 0 10px #ff69b4; }
-      50% { text-shadow: 0 0 20px #ff1493; }
-      100% { text-shadow: 0 0 10px #ff69b4; }
-    }
+p, .quote, .secret, footer {
+  animation: fadeIn 3s ease-in;
+  max-width: 600px;
+  margin: 0 auto 1em;
+  padding: 0 1em;
+}
 
-    p, .quote, .secret, footer {
-      max-width: 600px;
-      margin: 0 auto 1em;
-      padding: 0 1em;
-      font-size: 1.1em;
-    }
+.quote {
+  font-style: italic;
+  font-size: 1.1em;
+}
 
-    .quote {
-      font-style: italic;
-      color: #6a0dad;
-    }
+.secret {
+  margin-top: 2em;
+  cursor: pointer;
+  color: #d63384;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
 
-    .secret {
-      margin-top: 2em;
-      cursor: pointer;
-      color: #d63384;
-      font-weight: bold;
-    }
+.secret:hover {
+  color: #a61e6e;
+}
 
-    #hiddenMessage {
-      display: none;
-      margin-top: 1em;
-      font-size: 1.2em;
-      color: #6a0dad;
-    }
+#hiddenMessage {
+  display: none;
+  margin-top: 1em;
+  font-size: 1.1em;
+  color: #6a0dad;
+  animation: fadeIn 1s ease-in;
+}
 
-    #countdown {
-      margin: 2em auto;
-      font-size: 1.5em;
-      background: #fff;
-      padding: 1em;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 400px;
-    }
+footer {
+  margin-top: 3em;
+  font-size: 0.9em;
+  color: #888;
+}
 
-    #timer {
-      font-size: 2em;
-      color: #222;
-    }
+/* Falling hearts */
+.heart {
+  position: fixed;
+  top: -50px;
+  font-size: 2rem;
+  color: #ff69b4;
+  animation: fall 6s linear infinite;
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5em;
-      margin-top: 2em;
-    }
+@keyframes fall {
+  0% { top: -50px; opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
+}
 
-    .heart-frame {
-      width: 100%;
-      max-width: 250px;
-      height: 250px;
-      clip-path: path("M125,30 C160,-10 250,30 125,200 C0,30 90,-10 125,30 Z");
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      margin: 0 auto;
-    }
+/* Gallery grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5em;
+  padding: 0 1em;
+  animation: fadeIn 2s ease-in;
+}
 
-    .heart-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+/* Original photo cards */
+.photo {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
 
-    .caption {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
-      color: white;
-      background: rgba(0,0,0,0.6);
-      padding: 8px;
-      font-size: 1em;
-      border-radius: 8px;
-    }
+.photo:hover {
+  transform: scale(1.03);
+}
 
-    .balloon {
-      position: absolute;
-      bottom: -150px;
-      animation: floatUp 12s infinite ease-in;
-      width: 60px;
-    }
+.photo img {
+ .photo img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
 
-    @keyframes floatUp {
-      0% { bottom: -150px; }
-      100% { bottom: 100vh; }
-    }
+}
 
-    footer {
-      margin-top: 3em;
-      font-size: 0.9em;
-      color: #888;
-    }
+.caption {
+  padding: 0.5em 1em;
+  font-size: 0.95em;
+  color: #6a0dad;
+  background-color: #fdf0f5;
+}
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      .caption { font-size: 0.9em; }
-    }
+/* Heart-shaped frames */
+.heart-frame {
+  width: 100%;
+  max-width: 250px;
+  height: 250px;
+  clip-path: path("M125,30 C160,-10 250,30 125,200 C0,30 90,-10 125,30 Z");
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+}
+
+.heart-frame:hover {
+  transform: scale(1.05);
+}
+
+.heart-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.enhanced-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  padding: 8px;
+  font-size: 1em;
+  border-radius: 8px;
+  animation: fadeInUp 2s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Filters */
+.sepia { filter: sepia(80%); }
+.grayscale { filter: grayscale(100%); }
+.blur { filter: blur(2px); }
+
+/* Lightbox thumbnails */
+.lightbox-thumbs a img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.lightbox-thumbs a img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  .enhanced-caption {
+    font-size: 0.9em;
+    padding: 6px;
+  }
+
+  .lightbox-thumbs a img {
+    width: 80px;
+    height: 80px;
+  }
+  .photo img {
+    height: 150px;
+  }
+}
+#countdown {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 30px 0;
+}
+
+#timer {
+  font-size: 2em;
+  color: #333;
+  background: #f0f0f0;
+  padding: 15px 25px;
+  border-radius: 10px;
+  display: inline-block;
+}
+.sneha-greeting {
+  font-size: 3em;
+  text-align: center;
+  color: #ff69b4;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { text-shadow: 0 0 10px #ff69b4; }
+  50% { text-shadow: 0 0 20px #ff1493; }
+  100% { text-shadow: 0 0 10px #ff69b4; }
+}
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  animation: floatUp 12s infinite ease-in;
+  width: 60px;
+}
+
+@keyframes floatUp {
+  0% { bottom: -150px; }
+  100% { bottom: 100vh; }
+}
+
+
   </style>
 </head>
+<script>
+  // Set your target date here
+  const targetDate = new Date("January 15, 2026 23:59:59").getTime();
+
+  const countdown = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2, '0');
+    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+    if (distance < 0) {
+      clearInterval(countdown);
+      document.getElementById("timer").textContent = "🎉 It's time!";
+    }
+  }, 1000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  window.onload = () => {
+    confetti({
+      particleCount: 200,
+      spread: 90,
+      origin: { y: 0.6 }
+    });
+  };
+</script>
+  
 <body>
 
-  <!-- Confetti on load -->
-  <script>
-    window.onload = () => {
-      confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-    };
-  </script>
+ <div id="countdown">
+  <h2>⏰ Countdown to Launch</h2>
+  <div id="timer">
+    <span id="days">00</span>d :
+    <span id="hours">00</span>h :
+    <span id="minutes">00</span>m :
+    <span id="seconds">00</span>s
+  </div>
+</div>
 
-  <!-- Music -->
-  <audio autoplay loop controls>
-    <source src="your-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <h1 class="sneha-greeting">🎂 Happy Birthday, Sneha! 🎂</h1>
 
-  <!-- Greeting -->
-  <h1>🎂 Happy Birthday, Sneha! 🎂</h1>
-  <p>From the moment I first held your hand, I knew I’d never let go. This page is a tribute to that promise.</p>
+  <p>To the one who holds my heart,</p>
+  <p>From the moment I first held your hand, I knew I’d never let go. This page is a small tribute to that promise.</p>
+<img src="balloon1.png" class="balloon" style="left:10%;">
+<img src="balloon2.png" class="balloon" style="left:50%;">
+<img src="balloon3.png" class="balloon" style="left:80%;">
 
-  <!-- Quotes -->
-  <div class="quote">“You are my today and all of my tomorrows.” — Leo Christopher</div>
-  <div class="quote">“I choose you. And I’ll choose you over and over and over.”</div>
-  <div class="quote">“You are the poem I never knew how to write.” — Tyler Knott Gregson</div>
+  <div class="quote">“You are my today and all of my tomorrows </div>
+  <div class="quote">“I choose you. And I’ll choose you over and over and over. Without pause, without doubt, in a heartbeat. I’ll keep choosing you.”</div>
 
-  <!-- Secret Message -->
   <div class="secret" onclick="document.getElementById('hiddenMessage').style.display='block'">
     💌 Click here for a secret message
   </div>
   <div id="hiddenMessage">
     I love you more than words can say. You are my forever, Sneha.
   </div>
+<button onclick="revealSnehaSurprise()">🎁 Sneha’s Surprise</button>
+<div id="sneha-surprise" style="display:none; margin-top:20px;">
+  <p>✨ Sneha, you light up every room you walk into. Today is your day to shine! ✨</p>
+</div>
 
-  <!-- Countdown -->
-  <div id="countdown">
-    <h2>⏳ Countdown to Your Birthday Bash</h2>
-    <div id="timer">
-      <span id="days">00</span>d :
-      <span id="hours">00</span>h :
-      <span id="minutes">00</span>m :
-      <span id="seconds">00</span>s
+<script>
+  function revealSnehaSurprise() {
+    document.getElementById("sneha-surprise").style.display = "block";
+  }
+</script>
+
+  <!-- Original Photo Gallery -->
+  
+  <!-- Enhanced Heart-Shaped Gallery -->
+  <section style="margin-top: 4em;">
+    <h2 style="font-size: 2em; margin-bottom: 1em;">Special Frames Just for You 💖</h2>
+    <div class="gallery">
+      <div class="heart-frame">
+        <img src="images/IMG20220205181358.jpg" alt="Sneha smiling" class="sepia" />
+        <div class="enhanced-caption">Sneha's radiant smile 🌟</div>
+      </div>
+      <div class="heart-frame">
+        <img src="images/IMG20221003100959.jpg" alt="Sneha laughing" class="grayscale" />
+        <div class="enhanced-caption">Laughter that lights up the room 💫</div>
+      </div>
+      <div class="heart-frame">
+        <img src="images/IMG_20220724_182942.jpg" alt="Sneha dreamy" class="blur" />
+        <div class="enhanced-caption">Dreamy moments captured 💖</div>
+      </div>
     </div>
-  </div>
+  </section>
+  
 
-  <!-- Gallery -->
-  <h2>📸 Our Beautiful Moments</h2>
-  <div class="gallery">
-    <div class="heart-frame">
-      <img src="images/photo1.jpg" alt="Sneha smiling" />
-      <div class="caption">Your smile lights up my world</div>
+  <!-- Lightbox Slideshow -->
+  <section style="margin-top: 4em;">
+    <h2 style="font-size: 2em; margin-bottom: 1em;">Click to View Full-Size Slideshow 🌠</h2>
+    <div class="gallery lightbox-thumbs">
+           <a href="images/IMG20220205181358.jpg" data-lightbox="sneha-gallery" data-title="Sneha smiling">
+        <img src="images/IMG20220205181358.jpg" alt="Sneha smiling" />
+      </a>
+      <a href="images/IMG20221003100959.jpg" data-lightbox="sneha-gallery" data-title="Sneha laughing">
+        <img src="images/IMG20221003100959.jpg" alt="Sneha laughing" />
+      </a>
+      <a href="images/IMG_20220724_182942.jpg" data-lightbox="sneha-gallery" data-title="Sneha dreamy">
+        <img src="images/IMG_20220724_182942.jpg" alt="Sneha dreamy" />
+      </a>
     </div>
-    <div class="heart-frame">
-      <img src="images/photo2.jpg" alt="Together at sunset" />
-      <div class="caption">Golden hour with my golden girl</div>
-    </div>
-    <div class="heart-frame">
-      <img src="images/photo3.jpg" alt="Holding hands" />
-      <div class="caption">Every moment with you is magic</div>
-    </div>
-  </div>
+  </section>
 
-  <!-- Surprise Reveal -->
-  <button onclick="document.getElementById('sneha-surprise').style.display='block'" style="margin-top:2em;">🎁 Sneha’s Surprise</button>
-  <div id="sneha-surprise" style="display:none; margin-top:20px;">
-    <p>✨ Sneha, you light up every room you walk into. Today is your day to shine! ✨</p>
-    <img src="images/surprise.jpg" alt="Sneha's Surprise" style="width:100%; max-width:400px;">
-  </div>
-
-  <!-- Balloons -->
-  <img src="images/balloon1.png" class="balloon" style="left:10%;">
-  <img src="images/balloon2.png" class="balloon" style="left:50%;">
-  <img src="images/balloon3.png" class="balloon" style="left:80%;">
-
-  <!-- Countdown Script -->
-  <script>
-    const targetDate = new Date("October 15, 2025 18:00:00 GMT+0530").getTime();
-    const countdown = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 *      * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("days").textContent = String(days).padStart(2, '0');
-      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-
-      if (distance < 0) {
-        clearInterval(countdown);
-        document.getElementById("timer").innerHTML = "🎉 It's time to celebrate! 🎉";
-      }
-    }, 1000);
-  </script>
-
-  <!-- Footer -->
   <footer>
-    Made with 💖 by Banibrata for Sneha | October 2025
+    Made with endless love by Banibrata 💖
   </footer>
+
+  <!-- Falling hearts animation -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.innerText = '💖';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
 
 </body>
 </html>
+
