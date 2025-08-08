@@ -1,7 +1,7 @@
-// 🎈 Launch Countdown (10 seconds)
 document.addEventListener("DOMContentLoaded", function () {
   let countdownTime = 10;
   const launchTimer = document.getElementById("launch-timer");
+  const launchSection = document.getElementById("launch-countdown");
   const mainContent = document.getElementById("mainContent");
 
   const countdownInterval = setInterval(() => {
@@ -14,20 +14,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (countdownTime <= 0) {
       clearInterval(countdownInterval);
       launchTimer.textContent = "00:00";
-      document.getElementById("launch-countdown").style.display = "none";
+      launchSection.style.display = "none";
       mainContent.style.display = "block";
       mainContent.style.animation = "fadeIn 2s ease-in";
     }
   }, 1000);
 });
-
-// 🎂 Birthday Countdown
 document.addEventListener("DOMContentLoaded", function () {
-  const targetDate = new Date("January 15, 2026 23:59:59").getTime();
+  const targetDate = new Date("January 15, 2026 00:00:00").getTime();
 
   const birthdayInterval = setInterval(() => {
     const now = new Date().getTime();
     const distance = targetDate - now;
+
+    if (distance < 0) {
+      clearInterval(birthdayInterval);
+      document.getElementById("birthday-timer").innerHTML = "🎉 It's Sneha's Birthday!";
+      return;
+    }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -38,10 +42,5 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("hours").textContent = String(hours).padStart(2, '0');
     document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
     document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-
-    if (distance < 0) {
-      clearInterval(birthdayInterval);
-      document.getElementById("birthday-timer").textContent = "🎉 It's time!";
-    }
   }, 1000);
 });
