@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("JavaScript loaded ✅");
 
   // 🎯 Set your target birthday date and time
-  const targetDate = new Date("January 15, 2026 00:00:00").getTime();
+  const targetDate = new Date("August 09, 2025 01:09:00").getTime();
   console.log("Target date set to:", new Date(targetDate));
 
   // ✅ Grab DOM elements
