@@ -1,26 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let countdownTime = 10;
-  const launchTimer = document.getElementById("launch-timer");
-  const launchSection = document.getElementById("launch-countdown");
-  const mainContent = document.getElementById("mainContent");
-
-  const countdownInterval = setInterval(() => {
-    countdownTime--;
-
-    const minutes = Math.floor(countdownTime / 60);
-    const seconds = countdownTime % 60;
-    launchTimer.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
-    if (countdownTime <= 0) {
-      clearInterval(countdownInterval);
-      launchTimer.textContent = "00:00";
-      launchSection.style.display = "none";
-      mainContent.style.display = "block";
-      mainContent.style.animation = "fadeIn 2s ease-in";
-    }
-  }, 1000);
-});
-document.addEventListener("DOMContentLoaded", function () {
   const targetDate = new Date("January 15, 2026 00:00:00").getTime();
 
   const birthdayInterval = setInterval(() => {
@@ -29,7 +7,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (distance < 0) {
       clearInterval(birthdayInterval);
-      document.getElementById("birthday-timer").innerHTML = "🎉 It's Sneha's Birthday!";
+
+      // 🎉 Reveal main content
+      document.getElementById("birthday-countdown").style.display = "none";
+      const mainContent = document.getElementById("mainContent");
+      mainContent.style.display = "block";
+      mainContent.style.animation = "fadeIn 2s ease-in";
+
+      // 🎊 Optional: Trigger confetti
+      if (typeof confetti === "function") {
+        confetti({
+          particleCount: 200,
+          spread: 100,
+          origin: { y: 0.6 }
+        });
+      }
+
       return;
     }
 
