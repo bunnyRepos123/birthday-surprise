@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Happy Birthday Sneha 💖</title>
 
   <!-- Lightbox2 CSS & JS -->
@@ -17,6 +19,24 @@
     padding: 2rem;
     overflow: hidden;
   }
+img {
+  width: 100%; /* instead of fixed 400px */
+  height: auto;
+}
+  .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
 
   .stars {
     width: 100%;
