@@ -13,10 +13,38 @@
 
 </head>
 <script>
-  // Set your target date here
+// 🎈 Launch Countdown (10 seconds)
+document.addEventListener("DOMContentLoaded", function () {
+  let countdownTime = 10; // seconds
+  const launchTimer = document.getElementById("launch-timer");
+  const mainContent = document.getElementById("mainContent");
+
+  const countdownInterval = setInterval(() => {
+    countdownTime--;
+
+    const minutes = Math.floor(countdownTime / 60);
+    const seconds = countdownTime % 60;
+    launchTimer.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    if (countdownTime <= 0) {
+      clearInterval(countdownInterval);
+      launchTimer.textContent = "00:00";
+
+      // Hide launch countdown and show main content
+      document.getElementById("launch-countdown").style.display = "none";
+      mainContent.style.display = "block";
+      mainContent.style.animation = "fadeIn 2s ease-in";
+    }
+  }, 1000);
+});
+</script>
+
+<script>
+// 🎂 Birthday Countdown (to Jan 15, 2026)
+document.addEventListener("DOMContentLoaded", function () {
   const targetDate = new Date("January 15, 2026 23:59:59").getTime();
 
-  const countdown = setInterval(() => {
+  const birthdayInterval = setInterval(() => {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
@@ -31,45 +59,13 @@
     document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
 
     if (distance < 0) {
-      clearInterval(countdown);
-      document.getElementById("timer").textContent = "🎉 It's time!";
+      clearInterval(birthdayInterval);
+      document.getElementById("birthday-timer").textContent = "🎉 It's time!";
     }
   }, 1000);
+});
 </script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script>
-  window.onload = () => {
-    confetti({
-      particleCount: 200,
-      spread: 90,
-      origin: { y: 0.6 }
-    });
-  };
-</script>
-  <script>
-  let countdownTime = 10; // seconds
 
-  const timerElement = document.getElementById("timer");
-  const mainContent = document.getElementById("mainContent");
-
-  const countdownInterval = setInterval(() => {
-    countdownTime--;
-
-    const minutes = Math.floor(countdownTime / 60);
-    const seconds = countdownTime % 60;
-    timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
-    if (countdownTime <= 0) {
-      clearInterval(countdownInterval);
-      timerElement.textContent = "00:00:00";
-
-      // Hide countdown and show main content
-      document.getElementById("countdown").style.display = "none";
-      mainContent.style.display = "block";
-      mainContent.style.animation = "fadeIn 2s ease-in";
-    }
-  }, 1000);
-</script>
 
 <body>
 
