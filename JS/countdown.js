@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const targetDate = new Date("August 09, 2025 01:17:59").getTime();
+  const targetDate = new Date("August 09, 2025 01:46:59").getTime();
 
   const timerEl = document.getElementById("birthday-timer");
   const mainContent = document.getElementById("mainContent");
