@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // 🎯 Set your target birthday date and time
-  const targetDate = new Date("August 09, 2025 01:00:00").getTime();
+  const targetDate = new Date("August 09, 2025 01:02:00").getTime();
 
   // ⏳ Start countdown interval
   const birthdayInterval = setInterval(() => {
