@@ -46,7 +46,31 @@
     });
   };
 </script>
-  
+  <script>
+  let countdownTime = 10; // seconds
+
+  const timerElement = document.getElementById("timer");
+  const mainContent = document.getElementById("mainContent");
+
+  const countdownInterval = setInterval(() => {
+    countdownTime--;
+
+    const minutes = Math.floor(countdownTime / 60);
+    const seconds = countdownTime % 60;
+    timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    if (countdownTime <= 0) {
+      clearInterval(countdownInterval);
+      timerElement.textContent = "00:00:00";
+
+      // Hide countdown and show main content
+      document.getElementById("countdown").style.display = "none";
+      mainContent.style.display = "block";
+      mainContent.style.animation = "fadeIn 2s ease-in";
+    }
+  }, 1000);
+</script>
+
 <body>
   <div id="mainContent" style="display: none;">
   <!-- All your existing content goes here -->
