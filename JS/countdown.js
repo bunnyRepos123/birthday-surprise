@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Trigger confetti
       if (typeof confetti === "function") {
         confetti({
-          particleCount: 200,
+          particleCount: 1000,
           spread: 100,
           origin: { y: 0.6 }
         });
