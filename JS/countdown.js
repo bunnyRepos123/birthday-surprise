@@ -21,6 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (distance <= 0) {
       clearInterval(countdown);
 
+      const birthdayMusic = document.getElementById("birthdayMusic");
+if (birthdayMusic) {
+  birthdayMusic.play().catch(err => {
+    console.warn("🎶 Music autoplay was blocked by the browser:", err);
+  });
+}
+
       // Hide countdown
       timerEl.style.display = "none";
 
