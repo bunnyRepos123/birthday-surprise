@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("JavaScript loaded ✅");
+
   // 🎯 Set your target birthday date and time
-  const targetDate = new Date("August 09, 2025 01:02:00").getTime();
+  const targetDate = new Date("January 15, 2026 00:00:00").getTime();
+  console.log("Target date set to:", new Date(targetDate));
+
+  // ✅ Grab DOM elements
+  const countdownEl = document.getElementById("birthday-countdown");
+  const mainContent = document.getElementById("mainContent");
+
+  if (!countdownEl || !mainContent) {
+    console.error("❌ Missing required DOM elements. Check your HTML IDs.");
+    return;
+  }
 
   // ⏳ Start countdown interval
   const birthdayInterval = setInterval(() => {
@@ -19,22 +31,24 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
     document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
 
+    // 🧨 Debug log
+    console.log(`Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`);
+
     // 🎉 When countdown hits zero
     if (distance <= 0) {
       clearInterval(birthdayInterval);
+      console.log("🎉 Countdown complete! Revealing content...");
 
       // Hide countdown
-      document.getElementById("birthday-countdown").style.display = "none";
+      countdownEl.style.display = "none";
 
       // Reveal main content
-      const mainContent = document.getElementById("mainContent");
       mainContent.style.display = "block";
-
-      // Trigger animation
       mainContent.classList.add("fade-in");
 
       // Optional: Trigger confetti
       if (typeof confetti === "function") {
+        console.log("🎊 Triggering confetti...");
         confetti({
           particleCount: 200,
           spread: 100,
@@ -45,7 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // Optional: Play music
       const birthdayMusic = document.getElementById("birthdayMusic");
       if (birthdayMusic) {
+        console.log("🎶 Playing birthday music...");
         birthdayMusic.play();
+      } else {
+        console.log("🎶 No music element found.");
       }
     }
   }, 1000);
