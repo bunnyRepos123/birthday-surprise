@@ -6,13 +6,4 @@ document.addEventListener("DOMContentLoaded", function () {
     origin: { y: 0.6 }
   });
 
-  // Optional: Repeat confetti every few seconds
-  setInterval(() => {
-    confetti({
-      particleCount: 100,
-      spread: 60,
-      origin: { y: 0.7 }
-    });
-  }, 5000);
-});
 
