@@ -11,6 +11,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 <link rel="stylesheet" href="style.css">
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="JS/confetti.js"></script>
 
 </head>
   
@@ -101,19 +103,6 @@
 </div>
 
   <div class="stars"></div>
-
-  <!-- Falling hearts animation -->
-  <script>
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * window.innerWidth + 'px';
-      heart.innerText = '💖';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-    setInterval(createHeart, 500);
-  </script>
 
 </body>
 </html>
