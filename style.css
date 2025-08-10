@@ -291,4 +291,86 @@ footer {
     height: 150px;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    padding: 1rem;
+  }
+
+  h1, .sneha-greeting {
+    font-size: 2em;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p, .quote, .secret, .enhanced-caption {
+    font-size: 1em;
+    padding: 0.5em;
+  }
+
+  .typed-container {
+    font-size: 1em;
+    padding: 0.5em;
+  }
+
+  #timer {
+    font-size: 1.5em;
+    padding: 10px 15px;
+  }
+}
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+
+  .heart-frame {
+    max-width: 200px;
+    height: 200px;
+  }
+
+  .lightbox-thumbs a img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .photo img {
+    height: 150px;
+  }
+}
+@media (max-width: 768px) {
+  .balloon {
+    width: 40px;
+  }
+
+  .heart {
+    font-size: 1.5rem;
+  }
+
+  .trail-star {
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 768px) {
+  #birthday-timer {
+    margin: 20px 0;
+  }
+
+  #mainContent {
+    padding: 1em;
+  }
+
+  .section-box {
+    padding: 1em;
+    border-radius: 8px;
+  }
+}
+html {
+  font-size: clamp(14px, 2vw, 18px);
+}
+
 </style>
